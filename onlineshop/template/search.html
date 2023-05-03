@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+   Search Result
+{% endblock %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block content %}
+  <div>
+    <p class="text-center searchtext">You have searched for:<b>"{{query}}"</b></p>
+  </div>
+  <div class="container">
+        <div class="row mx-auto">
+            {% for p in products %}
+                <div class="bmargin col-9 col-sm-12 col-md-4 xol-lg-4">
+                    <div class="card text-center text-bg-dark" style="width:18rem; height:400px;">
+                        <a href="{{p.get_url}}"><img class="card-img-top cimage" src="{{p.image.url}}" alt="{{p.name}}" width="25%" height="25%"></a>
+                        <div class="card-body">
+                            <h5>{{p.name}}</h5>
+                            {% if products.stock <= 0 %}
+                                <p><b>Out of Stock</b></p>
+                            {% else %}
+                                <p>₹{{p.price}}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                  <div class="mx-auto">
+                    <p class="text-center searchtext">0 results found.</p>
+                      <br>
+                  </div>
+            {% endfor %}
+        </div>
+  </div>
+
+{% endblock %}

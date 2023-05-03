@@ -1,0 +1,47 @@
+body {font-family: 'Kanit', sans-serif;}
+.nav-item {
+            letter-spacing:.1em;
+            font-size:14px;
+            text-transform:uppercase; }
+.navbar-brand {
+            letter-spacing:.1em;
+            text-transform:uppercase; }
+.dropdown-item {
+            letter-spacing:.1em;
+            font-size:14px;
+            text-transform:uppercase; }
+
+
+.page_footer { background-color:#F8F6F0; height:60px; }
+.page_footer p {
+            padding-top:20px;
+            font-size:14px; }
+
+
+.row1 {     padding-top:15px; }
+.row1 mx-auto { font-size:12px; color:black; }
+.cimage { width:100%; height:auto}
+.mhead { letter-spacing:.1em;
+         text-transform:uppercase; }
+.cimage_pad { padding:5px; }
+.bmargin { margin-bottom:10px; }
+.card-body h5{
+            letter-spacing:.1em;
+            font-size:16px;
+            text-transform:uppercase; }
+
+
+.row2 {     padding-top:15px; padding-bottom:20px; }
+.row2 mx_auto { font-size:12px; color:black; }
+.ptitle { letter-spacing:.1em;
+         text-transform:uppercase;
+         padding-top:15px; padding-bottom:10px; }
+.pdesc { padding-right:20px;text-align: justify; }
+.searchtext { padding-top:20px; }
+
+.cthead { letter-spacing:.1em; font-size:20px; text-transform:uppercase; }
+.custom_table { min-width:400px; font-size:14px; }
+.custom_thead { font-weight:normal; letter-spacing:.1em; background-color:#CECECE !important ; text-transform:uppercase; }
+.custom_a { text-decoration:none; }
+.custom_icon { text-decoration:none; color:#36454F !important ; margin-right:5px; }
+.custom_button { margin-top:5px }

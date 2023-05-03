@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+    {% if category %}
+        {{category.description|truncatewords:155}}
+    {% else %}
+        Welcome to UrbanMoto, a store where you can find everything you need for your future rides.
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+    {% if category %}
+        {{category.name}} - UrbanMoto
+    {% else %}
+        UrbanMoto, a store where you can find everything you need for your future rides.
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if category %}
+        <div>
+            <div class="row row1">
+                <div class="mx-auto">
+                <p><a href="{% url 'shopapp:allProdCat' %}">Home </a>> {{category.name}}</p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="mx-auto">
+    {% if category %}
+        <img class="cimage cimage_pad" src="{{category.image.url}}" alt="{{category.name}}" width="1116px">
+    </div>
+    <br>
+    <div>
+        <h1 class="text-center mhead">{{category.name}}</h1>
+        <p class="text-center">{{category.description}}</p>
+    </div>
+    {% else %}
+    <div>
+        <img class="cimage cimage_pad" src="{% static 'img/banner.png' %}" alt="banner" width="1116px">
+    </div>
+    <br>
+    <div>
+        <h1 class="text-center mhead">Our Product Collection</h1>
+        <p style="text-align: justify;">Our collection offers a wide range of protective gear for motorcycle riders.
+            We typically feature a variety of products, including helmets, jackets, gloves, boots, and other safety equipment.
+            We also offer additional products, such as motorcycle accessories, tools, and parts.</p>
+    </div>
+    {% endif %}
+    <hr>
+    <div class="container">
+        <div class="row mx-auto">
+            {% for p in products.object_list %}
+                <div class="bmargin col-9 col-sm-12 col-md-4 xol-lg-4">
+                    <div class="card text-center text-bg-dark" style="width:18rem; height:400px;">
+                        <a href="{{p.get_url}}"><img class="card-img-top cimage" src="{{p.image.url}}" alt="{{p.name}}" width="25%" height="25%"></a>
+                        <div class="card-body">
+                            <h5>{{p.name}}</h5>
+                            {% if products.stock <= 0 %}
+                                <p><b>Out of Stock</b></p>
+                            {% else %}
+                                <p>₹{{p.price}}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="mx-auto">
+            {% if products.paginator.num_pages > 1 %}
+                <hr>
+            <div class="text-center">
+                {% for pg in products.paginator.page_range %}
+                    <a href="?page={{pg}}" class="btn btn-light btm-sm {% if products.number == pg %} active {% endif %}">{{pg}}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <br>
+    </div>
+
+{% endblock %}
